@@ -32,21 +32,19 @@ func binarySearch(arr []int, start int, end int, search int) bool {
 	if start == end {
 		return search == arr[start]
 	}
+
 	if search > arr[end-1] {
 		fmt.Printf("search greater than length\n")
 		return false
 	}
 
-	if search == arr[end-1] || search == arr[start] {
-		fmt.Println("%d found, returning true", search)
+	midpoint := (start + end) / 2
+	if search == arr[midpoint] {
 		return true
-	}
-
-	if search >= arr[end/2] {
-		fmt.Println("search > arr.len/2")
-		return binarySearch(arr, end/2, end, search)
+	} else if search < arr[midpoint] {
+		return binarySearch(arr, start, midpoint, search)
 	} else {
 		fmt.Println("search < arr.len/2")
-		return binarySearch(arr, start, end/2, search)
+		return binarySearch(arr, midpoint+1, end, search)
 	}
 }
