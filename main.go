@@ -33,8 +33,7 @@ func binarySearch(arr []int, start int, end int, search int) bool {
 		return search == arr[start]
 	}
 
-	if search > arr[end-1] {
-		fmt.Printf("search greater than length\n")
+	if search > arr[end-1] || search < arr[start] {
 		return false
 	}
 
